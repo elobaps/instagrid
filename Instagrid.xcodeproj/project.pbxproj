@@ -12,6 +12,8 @@
 		2F15289C22AE9C80000C2967 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F15289A22AE9C80000C2967 /* Main.storyboard */; };
 		2F15289E22AE9C81000C2967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F15289D22AE9C81000C2967 /* Assets.xcassets */; };
 		2F1528A122AE9C81000C2967 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F15289F22AE9C81000C2967 /* LaunchScreen.storyboard */; };
+		2F1528AD22AE9F39000C2967 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F1528AC22AE9F38000C2967 /* ThirstySoftRegular.otf */; };
+		2F1528AF22AE9F41000C2967 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F1528AE22AE9F40000C2967 /* Delm-Medium.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		2F15289D22AE9C81000C2967 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F1528A022AE9C81000C2967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F1528A222AE9C81000C2967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F1528AC22AE9F38000C2967 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		2F1528AE22AE9F40000C2967 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,48 @@
 		2F15289522AE9C80000C2967 /* Instagrid */ = {
 			isa = PBXGroup;
 			children = (
-				2F15289622AE9C80000C2967 /* AppDelegate.swift */,
-				2F15289822AE9C80000C2967 /* ViewController.swift */,
-				2F15289A22AE9C80000C2967 /* Main.storyboard */,
-				2F15289D22AE9C81000C2967 /* Assets.xcassets */,
-				2F15289F22AE9C81000C2967 /* LaunchScreen.storyboard */,
-				2F1528A222AE9C81000C2967 /* Info.plist */,
+				2F1528A822AE9C97000C2967 /* Model */,
+				2F1528A922AE9CA8000C2967 /* View */,
+				2F1528AA22AE9CB8000C2967 /* Controller */,
+				2F1528AB22AE9CC9000C2967 /* Supporting Files */,
 			);
 			path = Instagrid;
+			sourceTree = "<group>";
+		};
+		2F1528A822AE9C97000C2967 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F1528A922AE9CA8000C2967 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F15289A22AE9C80000C2967 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F1528AA22AE9CB8000C2967 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F15289822AE9C80000C2967 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F1528AB22AE9CC9000C2967 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2F15289D22AE9C81000C2967 /* Assets.xcassets */,
+				2F1528AE22AE9F40000C2967 /* Delm-Medium.otf */,
+				2F1528AC22AE9F38000C2967 /* ThirstySoftRegular.otf */,
+				2F15289622AE9C80000C2967 /* AppDelegate.swift */,
+				2F1528A222AE9C81000C2967 /* Info.plist */,
+				2F15289F22AE9C81000C2967 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F1528A122AE9C81000C2967 /* LaunchScreen.storyboard in Resources */,
+				2F1528AF22AE9F41000C2967 /* Delm-Medium.otf in Resources */,
 				2F15289E22AE9C81000C2967 /* Assets.xcassets in Resources */,
+				2F1528AD22AE9F39000C2967 /* ThirstySoftRegular.otf in Resources */,
 				2F15289C22AE9C80000C2967 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9A872RVUGW;
-				INFOPLIST_FILE = Instagrid/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Instagrid/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9A872RVUGW;
-				INFOPLIST_FILE = Instagrid/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Instagrid/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
