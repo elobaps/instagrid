@@ -14,6 +14,7 @@
 		2F1528A122AE9C81000C2967 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F15289F22AE9C81000C2967 /* LaunchScreen.storyboard */; };
 		2F1528AD22AE9F39000C2967 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F1528AC22AE9F38000C2967 /* ThirstySoftRegular.otf */; };
 		2F1528AF22AE9F41000C2967 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F1528AE22AE9F40000C2967 /* Delm-Medium.otf */; };
+		2F55020C22E897120084BE32 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F55020B22E897120084BE32 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2F1528A222AE9C81000C2967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F1528AC22AE9F38000C2967 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		2F1528AE22AE9F40000C2967 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
+		2F55020B22E897120084BE32 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,7 @@
 		2F15289522AE9C80000C2967 /* Instagrid */ = {
 			isa = PBXGroup;
 			children = (
-				2F1528A822AE9C97000C2967 /* Model */,
+				2F1528A822AE9C97000C2967 /* Extensions */,
 				2F1528A922AE9CA8000C2967 /* View */,
 				2F1528AA22AE9CB8000C2967 /* Controller */,
 				2F1528AB22AE9CC9000C2967 /* Supporting Files */,
@@ -66,11 +68,12 @@
 			path = Instagrid;
 			sourceTree = "<group>";
 		};
-		2F1528A822AE9C97000C2967 /* Model */ = {
+		2F1528A822AE9C97000C2967 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2F55020B22E897120084BE32 /* UIView.swift */,
 			);
-			path = Model;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		2F1528A922AE9CA8000C2967 /* View */ = {
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F15289922AE9C80000C2967 /* ViewController.swift in Sources */,
+				2F55020C22E897120084BE32 /* UIView.swift in Sources */,
 				2F15289722AE9C80000C2967 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +329,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9A872RVUGW;
 				INFOPLIST_FILE = "$(SRCROOT)/Instagrid/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -343,6 +348,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9A872RVUGW;
 				INFOPLIST_FILE = "$(SRCROOT)/Instagrid/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

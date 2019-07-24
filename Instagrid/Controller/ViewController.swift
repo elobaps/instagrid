@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet var layoutButtons: [UIButton]!
     @IBOutlet weak var topRightView: UIView!
@@ -25,13 +25,14 @@ class ViewController: UIViewController {
     var swipeGesture : UISwipeGestureRecognizer?
     
     // MARK: - Actions
+    // Method that manages the layout button selected by the user
     @IBAction func layoutButtonTapped(_ sender: UIButton) {
         layoutButtons.forEach { $0.isSelected = false }
         sender.isSelected = true
         
         switch sender.tag {
         case 0:
-          topRightView.isHidden = true
+            topRightView.isHidden = true
             bottomRightView.isHidden = false
         case 1:
             bottomRightView.isHidden = true
@@ -53,25 +54,50 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        swipeGesture = UISwipeGestureRecognizer (target: self, action: #selector(shareSwipeAction))
+        swipeGesture = UISwipeGestureRecognizer (target: self, action: #selector(handleSwipeAction))
         guard let swipeGesture = swipeGesture else {return}
         gridView.addGestureRecognizer(swipeGesture)
         NotificationCenter.default.addObserver(self, selector: #selector(setUpSwipeDirection), name: UIDevice.orientationDidChangeNotification, object: nil) 
-
+        
     }
     
     @objc func setUpSwipeDirection() {
         if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
-           swipeGesture?.direction = .left
+            swipeGesture?.direction = .left
         } else {
             swipeGesture?.direction = .up
         }
     }
     
-    @objc func shareSwipeAction() {
-        print("swipe ok")
+    // Method to manipulate the grid share with an animation for its return placement
+    func shareSwipeAction() {
+        let gridPicture = [gridView.asImage()]
+        
+        let ac = UIActivityViewController(activityItems: gridPicture, applicationActivities: nil)
+        present(ac, animated: true)
+        ac.completionWithItemsHandler = {_, _, _, _ in
+            UIView.animate(withDuration: 0.5, animations: {
+                self.gridView.transform = .identity
+            })
+        }
     }
-    
+   
+    // Method of the SwipeGesture, sets how the gridView transforms when the swipe is detected
+    @objc func handleSwipeAction()  {
+        if swipeGesture?.direction == .up {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.gridView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
+            }) { _ in
+                self.shareSwipeAction()
+            }
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.gridView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
+            }) { _ in
+                self.shareSwipeAction()
+            }
+        }
+    }
     
     
     func choosePictures(){
@@ -80,25 +106,23 @@ class ViewController: UIViewController {
         
         let alert = UIAlertController(title: "Choose picture", message: nil, preferredStyle: .actionSheet)
         
-        
         alert.addAction(UIAlertAction(title: "Library Picture", style: .default, handler: { (action:UIAlertAction)in
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert,animated: true, completion: nil)
-        
     }
-
+    
     @objc func choosePictureWithTap (gesture : UITapGestureRecognizer) {
-       tag = gesture.view?.tag
-       choosePictures()
-        
+        tag = gesture.view?.tag
+        choosePictures()
     }
-
 }
 
 // MARK: - UIImagePickerControllerDelegate
+  // Method that allows the user to select pictures in his library.
+ // Check button's tag cliked by the user to position the picture and hide button when picture id added.
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let pictureSelected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
