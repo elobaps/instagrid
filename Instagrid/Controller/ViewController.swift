@@ -61,6 +61,7 @@ class ViewController: UIViewController {
         
     }
     
+      // method that manages the swipe left and up depending on phone's orientation
     @objc func setUpSwipeDirection() {
         if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             swipeGesture?.direction = .left
