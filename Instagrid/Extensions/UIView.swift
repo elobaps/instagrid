@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
     
-    // Converts UIView to UIImage
+    /// Converts UIView to UIImage
     func asImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in

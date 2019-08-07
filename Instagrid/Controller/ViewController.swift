@@ -11,22 +11,23 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet var layoutButtons: [UIButton]!
-    @IBOutlet weak var topRightView: UIView!
-    @IBOutlet weak var bottomRightView: UIView!
     
-    @IBOutlet var addPictureButtons: [UIButton]!
+    @IBOutlet private var layoutButtons: [UIButton]!
+    @IBOutlet private weak var topRightView: UIView!
+    @IBOutlet private weak var bottomRightView: UIView!
+    @IBOutlet private var addPictureButtons: [UIButton]!
+    @IBOutlet private var pictureImageViews: [UIImageView]!
+    @IBOutlet private weak var gridView: UIView!
     
-    @IBOutlet var pictureImageViews: [UIImageView]!
+    // MARK: - Properties
     
-    @IBOutlet weak var gridView: UIView!
-    
-    var tag: Int?
-    var swipeGesture : UISwipeGestureRecognizer?
+    private var tag: Int?
+    private var swipeGesture : UISwipeGestureRecognizer?
     
     // MARK: - Actions
-    // Method that manages the layout button selected by the user
-    @IBAction func layoutButtonTapped(_ sender: UIButton) {
+    
+    /// Method that manages the layout button selected by the user
+    @IBAction private func layoutButtonTapped(_ sender: UIButton) {
         layoutButtons.forEach { $0.isSelected = false }
         sender.isSelected = true
         
@@ -45,11 +46,12 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func addPictureButtonTapped(_ sender: UIButton) {
+    @IBAction private func addPictureButtonTapped(_ sender: UIButton) {
         tag = sender.tag
         choosePictures()
     }
     
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +63,11 @@ class ViewController: UIViewController {
         
     }
     
-      // method that manages the swipe left and up depending on phone's orientation
-    @objc func setUpSwipeDirection() {
+    
+    // MARK: - Class Methods
+    
+    /// method that manages the swipe left and up depending on phone's orientationVersailles78
+    @objc private func setUpSwipeDirection() {
         if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             swipeGesture?.direction = .left
         } else {
@@ -70,8 +75,8 @@ class ViewController: UIViewController {
         }
     }
     
-    // Method to manipulate the grid share with an animation for its return placement
-    func shareSwipeAction() {
+    /// Method to manipulate the grid share with an animation for its return placement
+    private func shareSwipeAction() {
         let gridPicture = [gridView.asImage()]
         
         let ac = UIActivityViewController(activityItems: gridPicture, applicationActivities: nil)
@@ -83,8 +88,8 @@ class ViewController: UIViewController {
         }
     }
    
-    // Method of the SwipeGesture, sets how the gridView transforms when the swipe is detected
-    @objc func handleSwipeAction()  {
+    /// Method of the SwipeGesture, sets how the gridView transforms when the swipe is detected
+    @objc private func handleSwipeAction()  {
         if swipeGesture?.direction == .up {
             UIView.animate(withDuration: 0.5, animations: {
                 self.gridView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
@@ -101,7 +106,7 @@ class ViewController: UIViewController {
     }
     
     
-    func choosePictures(){
+    private func choosePictures(){
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         
@@ -115,13 +120,14 @@ class ViewController: UIViewController {
         present(alert,animated: true, completion: nil)
     }
     
-    @objc func choosePictureWithTap (gesture : UITapGestureRecognizer) {
+    @objc private func choosePictureWithTap (gesture : UITapGestureRecognizer) {
         tag = gesture.view?.tag
         choosePictures()
     }
 }
 
 // MARK: - UIImagePickerControllerDelegate
+
   // Method that allows the user to select pictures in his library.
  // Check button's tag cliked by the user to position the picture and hide button when picture id added.
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
