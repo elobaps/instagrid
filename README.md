@@ -13,4 +13,5 @@ Instagrid's app is a picture editing application that allows :
 
 ## Screenshot:
 
-![Screenshot-instagrid](https://user-images.githubusercontent.com/11584683/71645363-7faf3100-2cd7-11ea-9720-58782869da20.png)
+![Screenshot-Instagrid](https://user-images.githubusercontent.com/11584683/71645472-57283680-2cd9-11ea-87e0-c7b0aecf228e.png)
+
